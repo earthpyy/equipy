@@ -11,16 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
-
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', function () {
-    return redirect('/');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resources([
     'type' => 'TypeController'

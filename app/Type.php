@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class Types extends Model
 {
-    protected $table = 'type';
+    protected $fillable = [
+        'name',
+    ];
 }
