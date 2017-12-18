@@ -11,7 +11,7 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('types')->insert([
+        App\Type::insert([
             ['name' => 'Camera'],
             ['name' => 'Camera Equip.'], 
             ['name' => 'Light']

@@ -16,13 +16,13 @@ class CreateLentTable extends Migration
         Schema::create('lent', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('t_id');
-            $table->integer('b_id');
+            $table->integer('thing_id');
+            $table->integer('borrower_id');
             $table->integer('qty');
             $table->text('note');
             $table->dateTime('promising_date');
             $table->dateTime('return_date');
-            $table->integer('approver');
+            $table->integer('approver_id');
 
             $table->timestamps();
         });

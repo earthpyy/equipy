@@ -18,7 +18,7 @@ class CreateThingsTable extends Migration
 
             $table->string('name');
             $table->text('description')->nullable();
-            $table->integer('type');
+            $table->integer('type_id');
             $table->string('barcode');
             $table->integer('qty')->default(0);
 

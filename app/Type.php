@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Types extends Model
+class Type extends Model
 {
     protected $fillable = [
-        'name',
+        'name'
     ];
+
+    public function things() {
+        return $this->hasMany('App\Thing');
+    }
 }
