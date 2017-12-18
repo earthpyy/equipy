@@ -11,6 +11,6 @@ class Thing extends Model
     ];
 
     public function type() {
-        return $this->belongTo('App\Type');
+        return $this->belongsTo('App\Type');
     }
 }

@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/thing', 'ThingController@index')->name('thing');
 
 Route::resources([
     'type' => 'TypeController'
