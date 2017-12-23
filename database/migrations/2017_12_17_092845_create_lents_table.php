@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLentTable extends Migration
+class CreateLentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateLentTable extends Migration
      */
     public function up()
     {
-        Schema::create('lent', function (Blueprint $table) {
+        Schema::create('lents', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('thing_id');
             $table->integer('borrower_id');
-            $table->integer('qty');
             $table->text('note');
             $table->dateTime('promising_date');
-            $table->dateTime('return_date');
+            $table->dateTime('return_date')->nullable();
             $table->integer('approver_id');
 
             $table->timestamps();
@@ -35,6 +33,6 @@ class CreateLentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lent');
+        Schema::dropIfExists('lents');
     }
 }

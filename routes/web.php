@@ -17,5 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resources([
     'type' => 'TypeController', 
-    'thing' => 'ThingController'
+    'thing' => 'ThingController',
+    'lent' => 'LentController',
+    'borrower' => 'BorrowerController'
 ]);

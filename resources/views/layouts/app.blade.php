@@ -48,6 +48,13 @@
                         <a class="nav-link" href="{{ route('type.index') }}">Types</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('lent.index') }}">Lents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('borrower.index') }}">Borrowers</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
                         </a>
