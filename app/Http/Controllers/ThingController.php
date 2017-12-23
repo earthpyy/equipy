@@ -24,9 +24,9 @@ class ThingController extends Controller
      */
     public function index()
     {
-        $things = Thing::paginate(10);
+        $datas = Thing::paginate(10);
         
-        return view('thing.index')->with('things', $things);
+        return view('thing.index')->with('datas', $datas);
     }
 
     /**

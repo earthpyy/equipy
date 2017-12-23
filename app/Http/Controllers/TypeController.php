@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Type;
+use App\Thing;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Type::paginate(10);
+        
+        return view('type.index')->with('datas', $datas);
     }
 
     /**
@@ -46,7 +59,9 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        $datas = Thing::ofType($type)->paginate(10);
+
+        return view('thing.index')->with('type', $type->name)->with('datas', $datas);
     }
 
     /**

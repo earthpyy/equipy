@@ -13,4 +13,9 @@ class Thing extends Model
     public function type() {
         return $this->belongsTo('App\Type');
     }
+
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type_id', $type->id);
+    }
 }

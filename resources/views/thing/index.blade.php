@@ -1,42 +1,38 @@
-@extends('layouts.app')
+@extends('layouts.table')
 
-@section('content')
-<div class="container">
-    <h1 class="mb-0">Things</h1>
+@section('title', 'Things')
 
-    @if (Session::has('message'))
-        <div class="alert alert-info">{{ Session::get('message') }}</div>
-    @endif
+@isset($type)
+    @section('sub', $type)
+@endisset
 
-    <table class="table table-striped table-responsive-sm table-sm">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Barcode</th>
-                <th>QTY</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($things as $thing)
-            <tr>
-                <td>{{ $thing->id }}</td>
-                <td>{{ $thing->name }}</td>
-                <td>{{ $thing->type->name }}</td>
-                <td>{{ $thing->barcode }}</td>
-                <td>{{ $thing->qty }}</td>
+@section('header')
+    <th>#</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Barcode</th>
+    <th>QTY</th>
+@endsection
 
-                <td>
-                    <a class="btn btn-sm btn-success" href="{{ URL::to('thing/' . $thing->id) }}">Show</a>
-                    <a class="btn btn-sm btn-info" href="{{ URL::to('thing/' . $thing->id . '/edit') }}">Edit</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+@section('body')
+    @foreach($datas as $data)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $data->name }}</td>
+            <td>{{ $data->type->name }}</td>
+            <td>{{ $data->barcode }}</td>
+            {{--  <td>{{ $data->qty }}</td>  --}}
+            <td>
+            @if($data->qty > 0)
+                <font color="green">
+            @else
+                <font color="red">
+            @endif
+                    {{ $data->qty }}
+                </font>
+            </td>
 
-    {{ $things->links() }}
-</div>
+            @include('modifiers.full', ['id' => $data->id])
+        </tr>
+    @endforeach
 @endsection
