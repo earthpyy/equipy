@@ -22,6 +22,10 @@ class Lent extends Model
         return $this->belongsTo('App\Borrower');
     }
 
+    public function approver() {
+        return $this->belongsTo('App\User');
+    }
+
     public function scopeOfBorrower($query, $borrower)
     {
         return $query->where('borrower_id', $borrower->id);

@@ -6,6 +6,7 @@
     <th>#</th>
     <th>Name</th>
     <th>Telephone</th>
+    <th>Actions</th>
 @endsection
 
 @section('body')

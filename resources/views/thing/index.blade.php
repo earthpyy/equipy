@@ -12,6 +12,7 @@
     <th>Type</th>
     <th>Barcode</th>
     <th>QTY</th>
+    <th>Actions</th>
 @endsection
 
 @section('body')

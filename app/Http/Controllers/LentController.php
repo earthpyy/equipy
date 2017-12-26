@@ -48,7 +48,10 @@ class LentController extends Controller
      */
     public function show(Lent $lent)
     {
-        //
+        // $datas = $lent->things()->paginate(10);
+
+        // return view('lent.show')->with('id', $lent->id)->with('datas', $datas);
+        return view('lent.show')->with('lent', $lent);
     }
 
     /**

@@ -13,6 +13,7 @@
     <th>Borrower</th>
     <th>QTY</th>
     <th>Status</th>
+    <th>Actions</th>
 @endsection
 
 @section('body')
@@ -25,19 +26,7 @@
             <td>{{ $data->things->sum(function ($thing) {
                     return $thing->pivot->qty;
                 }) }}</td>
-            @if($data->return_date == null)
-                @if($data->promising_date < date('Y-m-d H:i:s'))
-                    <td class="text-danger">Overdue</td>
-                @else
-                    <td class="text-warning">Not return</td>
-                @endif
-            @else
-                @if($data->promising_date < $data->return_date)
-                    <td class="text-info">Late returned</td>
-                @else
-                    <td class="text-success">Returned</td>
-                @endif
-            @endif
+            <td>{!! getLentStatus($data) !!}</td>
 
             @include('modifiers.full', ['id' => $data->id])
         </tr>
