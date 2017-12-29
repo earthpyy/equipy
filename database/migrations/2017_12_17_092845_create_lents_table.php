@@ -19,6 +19,7 @@ class CreateLentsTable extends Migration
             $table->integer('borrower_id');
             $table->text('note')->nullable();
             $table->dateTime('promising_date');
+            $table->dateTime('completed_date')->nullable();
             $table->integer('approver_id');
 
             $table->timestamps();

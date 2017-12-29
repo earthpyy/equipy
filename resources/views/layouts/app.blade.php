@@ -41,14 +41,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('thing.index') }}">Things</a>
+                    <li class="nav-item submenu">
+                        <a class="nav-link li-dd" href="#">Things</a>
+                        <ul class="ul_submenu list-unstyled">
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">List All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">Types</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('type.index') }}">Types</a>
+                    <li class="nav-item submenu">
+                        <a class="nav-link li-dd" href="#">Request</a>
+                        <ul class="ul_submenu list-unstyled">
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">Borrow</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">Return</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('lent.index') }}">Lents</a>
+                    <li class="nav-item submenu">
+                        <a class="nav-link li-dd" href="#">Borrowing</a>
+                        <ul class="ul_submenu list-unstyled">
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">Uncompleted</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">History</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('borrower.index') }}">Borrowers</a>
@@ -74,6 +87,12 @@
             </div>
         </div>
     </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>  --}}
+    {{--  <script src="{{ asset('js/app.js') }}"></script>  --}}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/resume.js') }}"></script>
 
 </body>
 

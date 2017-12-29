@@ -10,7 +10,7 @@
   </div>
   <p class="mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
 </div>
-<!-- <div class="container">
+{{--  <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
@@ -28,5 +28,5 @@
       </div>
     </div>
   </div>
-</div>
+</div>  --}}
 @endsection

@@ -11,7 +11,7 @@ class Lent extends Model
     ];
 
     protected $dates = [
-        'promising_date'
+        'promising_date', 'completed_date'
     ];
 
     public function things() {

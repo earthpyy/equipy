@@ -23,9 +23,7 @@
             <td>{{ $data->created_at->format('d/m/Y') }}</td>
             <td>{{ $data->promising_date->format('d/m/Y') }}</td>
             <td>{{ $data->borrower->name }}</td>
-            <td>{{ $data->things->sum(function ($thing) {
-                    return $thing->pivot->qty;
-                }) }}</td>
+            <td>{{ $data->things->count() }}</td>
             <td>{!! getLentStatus($data) !!}</td>
 
             @include('modifiers.full', ['id' => $data->id])

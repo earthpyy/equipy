@@ -4,7 +4,7 @@
 @section('sub', 'ID: ' . $lent->id)
 
 @php
-    $datas = $lent->things()->paginate(10);
+    $datas = $lent->things()->orderBy('type_id')->paginate(10);
 @endphp
 
 @section('info')
@@ -25,10 +25,10 @@
                 <div class="col-4 font-weight-bold">Status</div>
                 <div class="col-8">{!! getLentStatus($lent) !!}</div>
             </div>
-            @if($lent->return_date != null)
+            @if($lent->completed_date != null)
             <div class="row">
-                <div class="col-4 font-weight-bold">Return Date</div>
-                <div class="col-8">{{ $lent->return_date }}</div>
+                <div class="col-4 font-weight-bold">Completed Date</div>
+                <div class="col-8">{{ $lent->completed_date }}</div>
             </div>
             @endif
             <div class="row">
@@ -47,16 +47,23 @@
 @section('header')
     <th>#</th>
     <th>Thing</th>
-    <th>QTY</th>
+    <th>Status</th>
+    <th>Return Date</th>
 @endsection
 
 @section('body')
-    @foreach($datas as $thing)
+    @foreach($datas as $i => $thing)
+        @if($i == 0 || $datas[$i - 1]->type != $thing->type)
+        <tr>
+            <th colspan="4">{{ $thing->type->name }}</th>
+        </tr>
+        @endif
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $thing->name }}</td>
-            <td>{{ $thing->pivot->qty }}</td>
-            </td>
+            <td>{!! getLentThingStatus($thing) !!}</td>
+            <td>{{ ($thing->pivot->return_date == null ? '-' : $thing->pivot->return_date) }}</td>
+        </td>
         </tr>
     @endforeach
 @endsection

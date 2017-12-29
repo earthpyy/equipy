@@ -14,7 +14,7 @@ class LentsTableSeeder extends Seeder
         factory(App\Lent::class, 25)->create()->each(function ($lent) {
             $lent->things()->saveMany(App\Thing::inRandomOrder()
                                                 ->where('status', 'AVAILABLE')
-                                                ->take(rand(1, 3))
+                                                ->take(rand(3, 10))
                                                 ->get());
         });
 

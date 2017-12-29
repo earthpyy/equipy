@@ -8,6 +8,7 @@ $factory->define(App\Lent::class, function (Faker $faker) {
         'note' => $faker->text(),
         'promising_date' => $faker->dateTimeBetween('+1 days', '+1 month'),
         // 'return_date' => (rand(0, 2) < 2 ? null : $faker->dateTimeBetween('+2 days', '+2 month')),
+        'completed_date' => null,
         'approver_id' => DB::table('users')->select('id')->inRandomOrder()->first()->id
     ];
 });

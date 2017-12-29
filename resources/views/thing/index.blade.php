@@ -11,7 +11,7 @@
     <th>Name</th>
     <th>Type</th>
     <th>Barcode</th>
-    <th>QTY</th>
+    <th>Status</th>
     <th>Actions</th>
 @endsection
 
@@ -22,16 +22,7 @@
             <td>{{ $data->name }}</td>
             <td>{{ $data->type->name }}</td>
             <td>{{ $data->barcode }}</td>
-            {{--  <td>{{ $data->qty }}</td>  --}}
-            <td>
-            @if($data->qty > 0)
-                <font color="green">
-            @else
-                <font color="red">
-            @endif
-                    {{ $data->qty }}
-                </font>
-            </td>
+            <td>{!! getThingStatus($data) !!}</td>
 
             @include('modifiers.full', ['id' => $data->id])
         </tr>
