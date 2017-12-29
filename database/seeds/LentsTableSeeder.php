@@ -12,11 +12,18 @@ class LentsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Lent::class, 25)->create()->each(function ($lent) {
-            $n = rand(1, 3);
-            $things = App\Thing::inRandomOrder()->take($n)->get();
-            for ($i = 0; $i < $n; $i++) {
-                $lent->things()->save($things[$i], ['qty' => rand(1, 2)]);
-            }
+            $lent->things()->saveMany(App\Thing::inRandomOrder()
+                                                ->where('status', 'AVAILABLE')
+                                                ->take(rand(1, 3))
+                                                ->get());
         });
+
+        // $lents = App\Lent::where('return_date', null)->get();
+        // foreach ($lents as $lent) {
+        //     foreach ($lent->things as $thing) {
+        //         $thing->status = 'OUTOFSTOCK';
+        //         $thing->save;
+        //     }
+        // }
     }
 }

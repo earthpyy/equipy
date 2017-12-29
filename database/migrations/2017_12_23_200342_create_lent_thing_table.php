@@ -18,7 +18,8 @@ class CreateLentThingTable extends Migration
 
             $table->integer('lent_id');
             $table->integer('thing_id');
-            $table->integer('qty');
+            $table->enum('status', ['NOTRETURN', 'RETURNED', 'DEFECTIVE']);
+            $table->dateTime('return_date')->nullable();
 
             $table->timestamps();
         });

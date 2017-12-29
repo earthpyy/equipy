@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Thing extends Model
 {
     protected $fillable = [
-        'name', 'description', 'barcode', 'qty'
+        'name', 'description', 'barcode', 'status'
     ];
 
     public function type() {

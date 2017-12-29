@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Lent extends Model
 {
     protected $fillable = [
-        'qty', 'note', 'promising_date', 'return_date'
+        'note', 'promising_date'
     ];
 
     protected $dates = [
-        'promising_date', 'return_date'
+        'promising_date'
     ];
 
     public function things() {
-        return $this->belongsToMany('App\Thing')->withPivot('qty');
+        return $this->belongsToMany('App\Thing')->withPivot('status', 'return_date');
     }
 
     public function borrower() {

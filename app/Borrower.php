@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Borrower extends Model
 {
     protected $fillable = [
-        'name', 'tel'
+        'name', 'student_id', 'tel'
     ];
 
     public function lents() {

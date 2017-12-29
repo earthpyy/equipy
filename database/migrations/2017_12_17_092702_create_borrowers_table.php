@@ -17,6 +17,7 @@ class CreateBorrowersTable extends Migration
             $table->increments('id');
 
             $table->string('name');
+            $table->string('student_id', 10)->nullable();
             $table->string('tel', 10);
 
             $table->timestamps();

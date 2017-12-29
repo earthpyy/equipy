@@ -20,7 +20,7 @@ class CreateThingsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('type_id');
             $table->string('barcode');
-            $table->integer('qty')->default(0);
+            $table->enum('status', ['AVAILABLE', 'OUTOFSTOCK', 'DEFECTIVE']);
 
             $table->timestamps();
         });
