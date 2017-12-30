@@ -15,6 +15,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/lent/uncompleted', 'LentController@showUncompleted')->name('lent.uncompleted');
+Route::get('/lent/history', 'LentController@showHistory')->name('lent.history');
+Route::get('/lent/borrow', 'LentController@borrow')->name('lent.borrow');
+
+Route::post('/thing/detail', 'ThingController@detail');
+
 Route::resources([
     'type' => 'TypeController', 
     'thing' => 'ThingController',

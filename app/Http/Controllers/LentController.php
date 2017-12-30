@@ -30,6 +30,30 @@ class LentController extends Controller
     }
 
     /**
+     * Display a listing of the resource which is uncompleted.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUncompleted()
+    {
+        $datas = Lent::where('completed_date', null)->paginate(10);
+
+        return view('lent.index')->with('sub', 'Uncompleted')->with('datas', $datas);
+    }
+
+    /**
+     * Display a listing of the resource which is completed.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showHistory()
+    {
+        $datas = Lent::where('completed_date', '!=', null)->paginate(10);
+
+        return view('lent.index')->with('sub', 'History')->with('datas', $datas);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,6 +61,16 @@ class LentController extends Controller
     public function create()
     {
         //
+    }
+
+    /**
+     * Show the form for creating a new borrowing.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function borrow()
+    {
+        return view('lent.borrow');
     }
 
     /**

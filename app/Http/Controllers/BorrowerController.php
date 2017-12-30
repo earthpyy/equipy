@@ -61,7 +61,7 @@ class BorrowerController extends Controller
     {
         $datas = Lent::ofBorrower($borrower)->paginate(10);
 
-        return view('lent.index')->with('borrower', $borrower->name)->with('datas', $datas);
+        return view('lent.index')->with('sub', $borrower->name)->with('datas', $datas);
     }
 
     /**

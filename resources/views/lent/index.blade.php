@@ -2,8 +2,8 @@
 
 @section('title', 'Lents')
 
-@isset($borrower)
-    @section('sub', $borrower)
+@isset($sub)
+    @section('sub', $sub)
 @endisset
 
 @section('header')

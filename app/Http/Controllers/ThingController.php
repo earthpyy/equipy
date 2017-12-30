@@ -94,4 +94,19 @@ class ThingController extends Controller
     {
         //
     }
+
+    /**
+     * Return thing's detail from barcode.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(Request $request)
+    {
+        if($request->ajax())
+        {
+            $thing = Thing::with('type')->where('barcode', $request->barcode)->first();
+            return response()->json($thing);
+        }
+    }
 }

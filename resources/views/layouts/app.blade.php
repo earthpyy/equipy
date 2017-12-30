@@ -51,7 +51,7 @@
                     <li class="nav-item submenu">
                         <a class="nav-link li-dd" href="#">Request</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">Borrow</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.borrow') }}">Borrow</a></li>
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">Return</a></li>
                         </ul>
                     </li>
@@ -59,8 +59,8 @@
                         <a class="nav-link li-dd" href="#">Borrowing</a>
                         <ul class="ul_submenu list-unstyled">
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">All</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">Uncompleted</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">History</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.uncompleted') }}">Uncompleted</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.history') }}">History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -93,6 +93,8 @@
     {{--  <script src="{{ asset('js/app.js') }}"></script>  --}}
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/resume.js') }}"></script>
+
+    @yield('script')
 
 </body>
 

@@ -7,41 +7,35 @@
     $datas = $lent->things()->orderBy('type_id')->paginate(10);
 @endphp
 
-@section('info')
-    <div class="card">
-        <div class="card-header">
-            Info
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4 font-weight-bold">Date</div>
-                <div class="col-8">{{ $lent->created_at }}</div>
-            </div>
-            <div class="row">
-                <div class="col-4 font-weight-bold">Promising date</div>
-                <div class="col-8">{{ $lent->promising_date }}</div>
-            </div>
-            <div class="row">
-                <div class="col-4 font-weight-bold">Status</div>
-                <div class="col-8">{!! getLentStatus($lent) !!}</div>
-            </div>
-            @if($lent->completed_date != null)
-            <div class="row">
-                <div class="col-4 font-weight-bold">Completed Date</div>
-                <div class="col-8">{{ $lent->completed_date }}</div>
-            </div>
-            @endif
-            <div class="row">
-                <div class="col-4 font-weight-bold">Approver</div>
-                <div class="col-8">{{ $lent->approver->name }}</div>
-            </div>
-            <div class="row">
-                <div class="col-4 font-weight-bold">Note</div>
-                <div class="col-8">{{ $lent->note }}</div>
-            </div>
-        </div>
+@section('info-header', 'Info')
+
+@section('info-body')
+    <div class="row">
+        <div class="col-4 font-weight-bold">Date</div>
+        <div class="col-8">{{ $lent->created_at }}</div>
     </div>
-    <br>
+    <div class="row">
+        <div class="col-4 font-weight-bold">Promising date</div>
+        <div class="col-8">{{ $lent->promising_date }}</div>
+    </div>
+    <div class="row">
+        <div class="col-4 font-weight-bold">Status</div>
+        <div class="col-8">{!! getLentStatus($lent) !!}</div>
+    </div>
+    @if($lent->completed_date != null)
+    <div class="row">
+        <div class="col-4 font-weight-bold">Completed Date</div>
+        <div class="col-8">{{ $lent->completed_date }}</div>
+    </div>
+    @endif
+    <div class="row">
+        <div class="col-4 font-weight-bold">Approver</div>
+        <div class="col-8">{{ $lent->approver->name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-4 font-weight-bold">Note</div>
+        <div class="col-8">{{ $lent->note }}</div>
+    </div>
 @endsection
 
 @section('header')
