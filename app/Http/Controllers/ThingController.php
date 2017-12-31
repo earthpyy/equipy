@@ -25,7 +25,6 @@ class ThingController extends Controller
     public function index()
     {
         $datas = Thing::paginate(10);
-        
         return view('thing.index')->with('datas', $datas);
     }
 
@@ -106,6 +105,23 @@ class ThingController extends Controller
         if($request->ajax())
         {
             $thing = Thing::with('type')->where('barcode', $request->barcode)->first();
+
+            if ($thing == NULL) {
+                return "Invalid barcode!";
+            } else if ($request->method == 'borrow') {
+                if ($thing->status == 'OUTOFSTOCK') {
+                    return "This equipment is already borrowed!";
+                } else if ($thing->status == 'DEFECTIVE') {
+                    return "This equipment is defective!";
+                }
+            } else {
+                if ($thing->status == 'AVAILABLE') {
+                    return "This equipment is not borrowed yet!";
+                } else if ($thing->status == 'DEFECTIVE') {
+                    return "Error!";
+                }
+            }
+
             return response()->json($thing);
         }
     }
