@@ -26,7 +26,10 @@
             <td>{{ $data->things->count() }}</td>
             <td>{!! getLentStatus($data) !!}</td>
 
-            @include('modifiers.full', ['id' => $data->id])
+            <td>
+                <a class="btn btn-sm btn-success" href="{{ url('lent/' . $data->id) }}">Show</a>
+                <a class="btn btn-sm btn-info" href="{{ url('lent/' . $data->id . '/edit') }}">Edit</a>
+            </td>
         </tr>
     @endforeach
 @endsection

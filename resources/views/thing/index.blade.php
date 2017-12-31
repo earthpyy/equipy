@@ -24,7 +24,10 @@
             <td>{{ $data->barcode }}</td>
             <td>{!! getThingStatus($data) !!}</td>
 
-            @include('modifiers.full', ['id' => $data->id])
+            <td>
+                <a class="btn btn-sm btn-success" href="{{ url('thing/' . $data->id) }}">Show</a>
+                <a class="btn btn-sm btn-info" href="{{ url('thing/' . $data->id . '/edit') }}">Edit</a>
+            </td>
         </tr>
     @endforeach
 @endsection

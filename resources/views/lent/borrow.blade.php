@@ -1,25 +1,29 @@
 @extends('layouts.request')
 
 @section('title', 'Borrow')
-@section('action', url('lent'));
+@section('action', url('lent'))
 
-@section('info-header', 'Borrower\'s Info')
+@section('info-header', 'Info')
 
 @section('info-body')
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required>
+            <input type="text" class="form-control" name="name" id="name">
         </div>
         <div class="form-group col-md-6">
-            <label for="student_id">Student ID</label>
-            <input type="text" class="form-control" id="student_id" placeholder="Optional">
+            <label for="telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="telephone">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="tel">Telephone</label>
-            <input type="text" class="form-control" id="tel" required>
+            <label for="student_id">Student ID</label>
+            <input type="text" class="form-control" name="student_id" id="student_id" placeholder="Optional">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="promising_date">Promising Date</label>
+            <input type="text" class="form-control" name="promising_date" id="promising_date">
         </div>
     </div>
 @endsection

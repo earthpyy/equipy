@@ -38,6 +38,10 @@
     </div>
 @endsection
 
+@section('info')
+    @include('layouts.info')
+@endsection
+
 @section('header')
     <th>#</th>
     <th>Thing</th>

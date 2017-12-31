@@ -3,7 +3,7 @@
 @section('content')
     @include('layouts.title')
 
-    @include('layouts.info')
+    @yield('info')
 
     <table class="table table-striped table-responsive-sm table-sm">
         <thead>

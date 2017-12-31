@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Thing;
+use App\Type;
 use Illuminate\Http\Request;
 
 class ThingController extends Controller
@@ -35,7 +36,8 @@ class ThingController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        return view('thing.create')->with('types', $types);
     }
 
     /**
@@ -46,7 +48,23 @@ class ThingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            // TODO: change barcode type here
+            'barcode' => 'required|digits:13|unique:things',
+            'name' => 'required|string|min:3|max:191',
+            'type' => 'required',
+            'description' => 'nullable|string|min:3',
+            'status' => 'required'
+        ]);
+        
+        Thing::create([
+            'barcode' => $request->barcode,
+            'name' => $request->name,
+            'type_id' => $request->type,
+            'description' => $request->description,
+            'status' => $request->status
+        ]);
+        return redirect('thing/create');
     }
 
     /**

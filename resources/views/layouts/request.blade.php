@@ -3,6 +3,8 @@
 @section('content')
     @include('layouts.title')
 
+    @include('layouts.alert')
+
     <form method="POST" action="@yield('action')">
         {{ csrf_field() }}
 
@@ -30,7 +32,8 @@
                 </table>
             </div>
         </div>
+        <br>
 
-        <input type="submit" value="Submit!">
+        <input type="submit" class="btn btn-primary" value="Submit!">
     </form>
 @endsection

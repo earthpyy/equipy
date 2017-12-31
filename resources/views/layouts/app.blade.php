@@ -45,6 +45,7 @@
                         <a class="nav-link li-dd" href="#">Things</a>
                         <ul class="ul_submenu list-unstyled">
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">List All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.create') }}">New Thing</a></li>
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">Types</a></li>
                         </ul>
                     </li>

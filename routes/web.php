@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/lent/uncompleted', 'LentController@showUncompleted')->name('lent.uncompleted');
 Route::get('/lent/history', 'LentController@showHistory')->name('lent.history');
 Route::get('/lent/borrow', 'LentController@borrow')->name('lent.borrow');
+Route::get('/lent/borrower/{id}', 'LentController@borrower');
 
 Route::post('/thing/detail', 'ThingController@detail');
 
