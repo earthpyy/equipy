@@ -22,6 +22,8 @@ Route::get('/lent/borrower/{id}', 'LentController@borrower');
 
 Route::post('/thing/detail', 'ThingController@detail');
 
+Route::post('/borrower/get', 'BorrowerController@get');
+
 Route::resources([
     'type' => 'TypeController', 
     'thing' => 'ThingController',

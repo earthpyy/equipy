@@ -131,7 +131,7 @@ class LentController extends Controller
             }
         }
 
-        return redirect('lent/borrow');
+        return redirect('lent/' . $lent->id);
     }
 
     /**

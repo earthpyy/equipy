@@ -31,6 +31,20 @@ class BorrowerController extends Controller
     }
 
     /**
+     * Return all borrower.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function get(Request $request)
+    {
+        if ($request->ajax()) {
+            $borrowers = Borrower::all();
+            return response()->json($borrowers);
+        }
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
