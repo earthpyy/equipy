@@ -3,7 +3,7 @@
 @section('title', 'New Thing')
 @section('action', url('thing'))
 
-@section('info-header', 'Information')
+@section('info-header', 'Info')
 
 @section('info-body')
     <div class="form-row">
@@ -18,7 +18,7 @@
             <input type="text" class="form-control" name="name" id="name">
         </div>
         <div class="form-group col-md-6">
-            <label for="type_id">Type</label>
+            <label for="type">Type</label>
             <select class="form-control" name="type" id="type">
                 @foreach($types as $type)
                     <option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -37,7 +37,7 @@
             <label for="status">Status</label>
             <select class="form-control" name="status" id="status">
                 <option value="AVAILABLE">AVAILABLE</option>
-                <option value="OUTOFSTOCK">OUT OF STOCK</option>
+                <option value="OUTOFSTOCK" disabled>OUT OF STOCK</option>
                 <option value="DEFECTIVE">DEFECTIVE</option>
             </select>
         </div>

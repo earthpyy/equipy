@@ -66,17 +66,6 @@ class BorrowerController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Borrower  $borrower
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Borrower $borrower)
-    {
-        return redirect('lent/borrower/' . $borrower->id);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Borrower  $borrower

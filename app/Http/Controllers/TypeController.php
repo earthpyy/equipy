@@ -37,7 +37,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('type.create');
     }
 
     /**
@@ -48,7 +48,14 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|unique:types|min:3|max:191'
+        ]);
+        
+        Type::create([
+            'name' => $request->name
+        ]);
+        return redirect('type');
     }
 
     /**
@@ -72,7 +79,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('type.edit')->with('type', $type);
     }
 
     /**
@@ -84,7 +91,14 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|unique:types,name,' . $type->id . '|min:3|max:191'
+        ]);
+        
+        $type->name = $request->name;
+        $type->save();
+
+        return redirect('type');
     }
 
     /**
@@ -95,6 +109,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->things()->delete();
+        $type->delete();
+        return redirect('type');
     }
 }

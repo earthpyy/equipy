@@ -2,9 +2,13 @@
 
 @section('title', 'Lents')
 
-@isset($sub)
-    @section('sub', $sub)
+@isset($borrower)
+    @section('sub', $borrower->name)
 @endisset
+
+@section('button')
+    <a class="btn btn-sm btn-success" href="{{ route('lent.borrow', ['borrower' => isset($borrower) ? $borrower : null]) }}">New Borrow</a>
+@endsection
 
 @section('header')
     <th>#</th>
@@ -27,8 +31,13 @@
             <td>{!! getLentStatus($data) !!}</td>
 
             <td>
-                <a class="btn btn-sm btn-success" href="{{ url('lent/' . $data->id) }}">Show</a>
-                <a class="btn btn-sm btn-info" href="{{ url('lent/' . $data->id . '/edit') }}">Edit</a>
+                <a class="btn btn-sm btn-info" href="{{ url('lent', [$data->id]) }}">Show</a>
+                <a class="btn btn-sm btn-warning" href="{{ route('lent.edit', ['id' => $data->id]) }}">Edit | Return</a>
+                {{--  <form class="d-inline" action="{{url('lent', [$data->id])}}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                </form>  --}}
             </td>
         </tr>
     @endforeach

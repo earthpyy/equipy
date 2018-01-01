@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type extends Model
 {
-    protected $fillable = [
-        'name'
-    ];
+    protected $guarded = [];
 
     public function things() {
         return $this->hasMany('App\Thing');

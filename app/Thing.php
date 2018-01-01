@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thing extends Model
 {
-    protected $fillable = [
-        'name', 'description', 'barcode', 'type_id', 'status'
-    ];
+    protected $guarded = [];
 
     public function type() {
         return $this->belongsTo('App\Type');

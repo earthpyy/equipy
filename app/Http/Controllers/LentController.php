@@ -35,16 +35,14 @@ class LentController extends Controller
     /**
      * Display a listing of the resource which borrowed by someone.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Borrower  $borrower
      * @return \Illuminate\Http\Response
      */
-    public function borrower(Request $request, $id)
+    public function borrower(Borrower $borrower)
     {
-        $borrower = Borrower::findOrFail($id);
         $datas = Lent::ofBorrower($borrower)->paginate(10);
 
-        return view('lent.index')->with('sub', $borrower->name)->with('datas', $datas);
+        return view('lent.index')->with('borrower', $borrower)->with('datas', $datas);
     }
 
     /**
@@ -72,23 +70,14 @@ class LentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new borrowing.
      *
+     * @param  App\Borrower  $borrower = null
      * @return \Illuminate\Http\Response
      */
-    public function borrow()
+    public function borrow(Borrower $borrower = null)
     {
-        return view('lent.borrow');
+        return view('lent.borrow')->with('borrower', $borrower);
     }
 
     /**
@@ -156,7 +145,7 @@ class LentController extends Controller
      */
     public function edit(Lent $lent)
     {
-        //
+        return view('lent.edit')->with('lent', $lent);
     }
 
     /**
@@ -168,7 +157,55 @@ class LentController extends Controller
      */
     public function update(Request $request, Lent $lent)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:191',
+            // TODO: change student_id here
+            'student_id' => 'nullable|digits:10',
+            'telephone' => 'required|digits:10',
+            'promising_date' => 'required|date',
+
+            // 'things' => 'required|array|min:1'
+        ]);
+        
+        $borrower = Borrower::firstOrCreate([
+            'name' => $request->name,
+            'student_id' => $request->student_id,
+            'tel' => $request->telephone
+        ]);
+
+        // $lent = new Lent;
+        $lent->borrower_id = $borrower->id;
+        $lent->note = $request->note;
+        $lent->promising_date = $request->promising_date;
+        // $lent->approver_id = Auth::user()->id;
+        // $lent->save();
+
+        $completed = true;
+        foreach ($request->things as $thingId => $status) {
+            $oldThing = $lent->things()->find($thingId);
+            $status = str_replace('WILL', '', $status);
+            if ($oldThing->pivot->status != $status) {
+                if ($oldThing->pivot->status == 'NOTRETURN') {
+                    if ($status == 'RETURNED') {
+                        $oldThing->status = 'AVAILABLE';
+                    } else {
+                        $oldThing->status = 'DEFECTIVE';
+                    }
+                    $oldThing->save();
+                    $lent->things()->updateExistingPivot($thingId, ['status' => $status, 'return_date' => date('Y-m-d H:i:s')]);
+                // } else {
+                }
+            } else if ($oldThing->pivot->status == 'NOTRETURN') {
+                $completed = false;
+            }
+        }
+
+        if ($completed) {
+            $lent->completed_date = date('Y-m-d H:i:s');
+        }
+        $lent->save();
+
+        return redirect('lent/' . $lent->id);
     }
 
     /**

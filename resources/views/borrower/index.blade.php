@@ -5,6 +5,7 @@
 @section('header')
     <th>#</th>
     <th>Name</th>
+    <th>Student ID</th>
     <th>Telephone</th>
     <th>Actions</th>
 @endsection
@@ -14,11 +15,12 @@
     <tr>
         <td>{{ $loop->iteration }}</td>
         <td>{{ $data->name }}</td>
-        <td>{{ substr($data->tel, 0, 3) . '-' . substr($data->tel, 3) }}</td>
+        <td>{{ $data->student_id }}</td>
+        <td>{{ $data->tel }}</td>
 
         <td>
-            <a class="btn btn-sm btn-success" href="{{ url('borrower/' . $data->id) }}">Show</a>
-            <a class="btn btn-sm btn-info" href="{{ url('borrower/' . $data->id . '/edit') }}">Edit</a>
+            <a class="btn btn-sm btn-info" href="{{ url('lent/borrower', [$data->id]) }}">Show</a>
+            {{--  <a class="btn btn-sm btn-warning" href="{{ route('borrower.edit', ['id' => $data->id]) }}">Edit</a>  --}}
         </td>
     </tr>
 @endforeach

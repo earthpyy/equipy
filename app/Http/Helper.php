@@ -18,21 +18,21 @@ function getLentStatus($lent) {
 
 function getThingStatus($thing) {
     if ($thing->status == 'AVAILABLE') {
-        return '<div class="text-success">AVAILABLE</div>';
+        return '<div class="text-success">Available</div>';
     } else if ($thing->status == 'OUTOFSTOCK') {
-        return '<div class="text-danger">OUT OF STOCK</div>';
+        return '<div class="text-danger">Out of stock</div>';
     } else {
-        return '<div class="text-warning">DEFECTIVE</div>';
+        return '<div class="text-warning">Defective</div>';
     }
 }
 
 function getLentThingStatus($lent_thing) {
     if ($lent_thing->pivot->status == 'RETURNED') {
-        return '<div class="text-success">RETURNED</div>';
+        return '<div class="text-success">Returned</div>';
     } else if ($lent_thing->pivot->status == 'NOTRETURN') {
-        return '<div class="text-danger">NOT RETURN</div>';
+        return '<div class="text-danger">Not return</div>';
     } else {
-        return '<div class="text-warning">DEFECTIVE</div>';
+        return '<div class="text-warning">Defective</div>';
     }
 }
 

@@ -15,18 +15,16 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::resource('type', 'TypeController');
+
 Route::get('/lent/uncompleted', 'LentController@showUncompleted')->name('lent.uncompleted');
 Route::get('/lent/history', 'LentController@showHistory')->name('lent.history');
-Route::get('/lent/borrow', 'LentController@borrow')->name('lent.borrow');
-Route::get('/lent/borrower/{id}', 'LentController@borrower');
+Route::get('/lent/borrow/{borrower?}', 'LentController@borrow')->name('lent.borrow');
+Route::get('/lent/borrower/{borrower}', 'LentController@borrower');
+Route::resource('lent', 'LentController', ['except' => ['create']]);
 
 Route::post('/thing/detail', 'ThingController@detail');
+Route::resource('thing', 'ThingController');
 
 Route::post('/borrower/get', 'BorrowerController@get');
-
-Route::resources([
-    'type' => 'TypeController', 
-    'thing' => 'ThingController',
-    'lent' => 'LentController',
-    'borrower' => 'BorrowerController'
-]);
+Route::resource('borrower', 'BorrowerController', ['except' => ['show', 'create']]);

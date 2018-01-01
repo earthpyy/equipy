@@ -9,17 +9,17 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" id="name">
+            <input type="text" class="form-control" name="name" id="name" value="{{ isset($borrower) ? $borrower->name : '' }}">
         </div>
         <div class="form-group col-md-6">
             <label for="telephone">Telephone</label>
-            <input type="text" class="form-control" name="telephone" id="telephone">
+            <input type="text" class="form-control" name="telephone" id="telephone" value="{{ isset($borrower) ? $borrower->getOriginal('tel') : '' }}">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="student_id">Student ID</label>
-            <input type="text" class="form-control" name="student_id" id="student_id" placeholder="Optional">
+            <input type="text" class="form-control" name="student_id" id="student_id" placeholder="Optional" value="{{ isset($borrower) ? $borrower->getOriginal('student_id') : '' }}">
         </div>
         <div class="form-group col-md-6">
             <label for="promising_date">Promising Date</label>
@@ -29,11 +29,11 @@
 @endsection
 
 @section('table-header')
-    <th>#</th>
-    <th>Barcode</th>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Actions</th>
+    <th class="col-1">#</th>
+    <th class="col">Barcode</th>
+    <th class="col">Name</th>
+    <th class="col">Type</th>
+    <th class="col-2">Actions</th>
 @endsection
 
 @section('script')
@@ -72,7 +72,7 @@
                             }
                         });
                         if (!dup) {
-                            $('#list').append('<tr><td><input type="hidden" name="things[]" value="' + thing.id + '">' + i + '</td><td class="things">' + thing.barcode + '</td><td>' + thing.name + '</td><td>' + thing.type.name + '</td><td><a class="btn btn-sm btn-danger" id="remove" href="#">Remove</a></td></tr>');  
+                            $('#list').append('<tr class="row"><td class="col-1"><input type="hidden" name="things[]" value="' + thing.id + '">' + i + '</td><td class="col things">' + thing.barcode + '</td><td class="col">' + thing.name + '</td><td class="col">' + thing.type.name + '</td><td class="col-2"><a class="btn btn-sm btn-danger" id="remove" href="#">Remove</a></td></tr>');  
                             i++;
                         } else {
                             alert('This equipment is already in list!');

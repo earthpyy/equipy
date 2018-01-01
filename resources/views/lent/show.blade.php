@@ -12,11 +12,25 @@
 @section('info-body')
     <div class="row">
         <div class="col-4 font-weight-bold">Date</div>
-        <div class="col-8">{{ $lent->created_at }}</div>
+        <div class="col-8">{{ $lent->created_at->format('d/m/Y H:i') }}</div>
     </div>
     <div class="row">
         <div class="col-4 font-weight-bold">Promising date</div>
-        <div class="col-8">{{ $lent->promising_date }}</div>
+        <div class="col-8">{{ $lent->promising_date->format('d/m/Y H:i') }}</div>
+    </div>
+    <div class="row">
+        <div class="col-4 font-weight-bold">Borrower</div>
+        <div class="col-8">{{ $lent->borrower->name }}</div>
+    </div>
+    @if($lent->borrower->student_id != '-')
+    <div class="row">
+        <div class="col-4 font-weight-bold">Student ID</div>
+        <div class="col-8">{{ $lent->borrower->student_id }}</div>
+    </div>
+    @endif
+    <div class="row">
+        <div class="col-4 font-weight-bold">Telephone</div>
+        <div class="col-8">{{ $lent->borrower->tel }}</div>
     </div>
     <div class="row">
         <div class="col-4 font-weight-bold">Status</div>

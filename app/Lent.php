@@ -3,15 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lent extends Model
 {
-    protected $fillable = [
-        'note', 'promising_date'
-    ];
+    use SoftDeletes;
 
+    protected $guarded = [];
     protected $dates = [
-        'promising_date', 'completed_date'
+        'promising_date', 'completed_date', 'deleted_at'
     ];
 
     public function things() {

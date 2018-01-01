@@ -22,7 +22,7 @@
                 </div>
                 <table class="table table-striped table-responsive-sm table-sm">
                     <thead>
-                        <tr>
+                        <tr class="row">
                             @yield('table-header')
                         </tr>
                     </thead>
