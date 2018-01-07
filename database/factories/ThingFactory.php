@@ -8,7 +8,7 @@ $factory->define(App\Thing::class, function (Faker $faker) {
         'description' => $faker->text(),
         // 'type' => $faker->randomElement(App\Type::all('id')->toArray()),
         'type_id' => DB::table('types')->select('id')->inRandomOrder()->first()->id,
-        'barcode' => $faker->isbn13(),
+        'barcode' => $faker->randomNumber(5),
         'status' => 'AVAILABLE'
     ];
 });

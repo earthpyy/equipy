@@ -109,8 +109,12 @@
 
     var i = $('#list tr').size() + 1;
 
+    $(document).on("keypress", ":input:not(textarea)", function(event) {
+        return event.keyCode != 13;
+    });
+
     $(document).on('change keydown paste input', '#barcode', function(){
-        if ($('#barcode').val().length == 13) {
+        if ($('#barcode').val().length == 5) {
 
             var barcode = $('#barcode').val();
             $('#barcode').val('');

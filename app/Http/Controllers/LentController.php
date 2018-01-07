@@ -106,7 +106,7 @@ class LentController extends Controller
 
         $lent = new Lent;
         $lent->borrower_id = $borrower->id;
-        $lent->note = $request->note;
+        // $lent->note = $request->note;
         $lent->promising_date = $request->promising_date;
         $lent->approver_id = Auth::user()->id;
         $lent->save();
@@ -175,7 +175,7 @@ class LentController extends Controller
 
         // $lent = new Lent;
         $lent->borrower_id = $borrower->id;
-        $lent->note = $request->note;
+        // $lent->note = $request->note;
         $lent->promising_date = $request->promising_date;
         // $lent->approver_id = Auth::user()->id;
         // $lent->save();

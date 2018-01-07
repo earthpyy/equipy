@@ -49,8 +49,7 @@ class ThingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // TODO: change barcode type here
-            'barcode' => 'required|digits:13|unique:things',
+            'barcode' => 'required|digits:5|unique:things',
             'name' => 'required|string|min:3|max:191',
             'type' => 'required|exists:types,id',
             'description' => 'nullable|string|min:3',
@@ -100,8 +99,7 @@ class ThingController extends Controller
     public function update(Request $request, Thing $thing)
     {
         $request->validate([
-            // TODO: change barcode type here
-            'barcode' => 'required|digits:13|unique:things,barcode,' . $thing->id,
+            'barcode' => 'required|digits:5|unique:things,barcode,' . $thing->id,
             'name' => 'required|string|min:3|max:191',
             'type' => 'required|exists:types,id',
             'description' => 'nullable|string|min:3',
