@@ -139,7 +139,7 @@ class ThingController extends Controller
         if ($thing->status != 'OUTOFSTOCK') {
             $thing->delete();
         }
-        return redirect('thing');
+        return back();
     }
 
     /**

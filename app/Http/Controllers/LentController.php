@@ -216,6 +216,14 @@ class LentController extends Controller
      */
     public function destroy(Lent $lent)
     {
-        //
+        $lent->things->each(function ($thing) {
+            if ($thing->status == 'OUTOFSTOCK') {
+                $thing->status = 'AVAILABLE';
+                $thing->save();
+            }
+        });
+        $lent->delete();
+
+        return back();
     }
 }

@@ -5,13 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -23,9 +20,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand">
-                {{--  <span class="d-none d-lg-block">  --}}
-                    {{--  <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ asset('img/profile.jpg') }}" alt="">  --}}
-                {{--  </span>  --}}
+                {{--  <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ asset('img/profile.jpg') }}" alt="">
+                </span>  --}}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -35,40 +32,40 @@
                 <ul class="navbar-nav">
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('login') }}">@lang('app.login')</a>
                     </li>
-                    <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
+                    {{-- <li><a href="{{ route('register') }}">Register</a></li> --}}
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link" href="{{ route('home') }}">@lang('app.home')</a>
                     </li>
                     <li class="nav-item submenu">
-                        <a class="nav-link li-dd" href="#">Things</a>
+                        <a class="nav-link li-dd" href="#">@lang('app.things')</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">List All</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.defective') }}">Defective</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">@lang('app.things.all')</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.defective') }}">@lang('app.things.defective')</a></li>
                             {{--  <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.create') }}">New Thing</a></li>  --}}
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">Types</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">@lang('app.things.types')</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('lent.borrow') }}">Borrow</a>
+                        <a class="nav-link" href="{{ route('lent.borrow') }}">@lang('app.borrow')</a>
                     </li>
                     <li class="nav-item submenu">
-                        <a class="nav-link li-dd" href="#">List</a>
+                        <a class="nav-link li-dd" href="#">@lang('app.list')</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">All</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.uncompleted') }}">Uncompleted</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.history') }}">History</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">@lang('app.list.all')</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.uncompleted') }}">@lang('app.list.uncompleted')</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.history') }}">@lang('app.list.history')</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('borrower.index') }}">Borrowers</a>
+                        <a class="nav-link" href="{{ route('borrower.index') }}">@lang('app.borrowers')</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
+                                @lang('app.logout')
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -97,65 +94,5 @@
     @yield('script')
 
 </body>
-
-<!-- <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
-    </div>
-
-    <script src="{{ asset('js/app.js') }}"></script>
-</body> -->
 
 </html>

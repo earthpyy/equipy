@@ -111,6 +111,6 @@ class TypeController extends Controller
     {
         $type->things()->delete();
         $type->delete();
-        return redirect('type');
+        return back();
     }
 }

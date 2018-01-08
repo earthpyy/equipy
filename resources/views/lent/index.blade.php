@@ -23,7 +23,7 @@
 @section('body')
     @foreach($datas as $data)
         <tr>
-            <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
+            <td><a href="{{ url('lent', [$data->id]) }}">{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</a></td>
             <td>{{ $data->created_at->format('d/m/Y') }}</td>
             <td>{{ $data->promising_date }}</td>
             <td>{{ $data->borrower->name }}</td>
@@ -31,13 +31,13 @@
             <td>{!! getLentStatus($data) !!}</td>
 
             <td>
-                <a class="btn btn-sm btn-info" href="{{ url('lent', [$data->id]) }}">Show</a>
+                {{--  <a class="btn btn-sm btn-info" href="{{ url('lent', [$data->id]) }}">Show</a>  --}}
                 <a class="btn btn-sm btn-warning" href="{{ route('lent.edit', ['id' => $data->id]) }}">Edit | Return</a>
-                {{--  <form class="d-inline" action="{{url('lent', [$data->id])}}" method="POST">
+                <form class="d-inline" action="{{url('lent', [$data->id])}}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
-                </form>  --}}
+                </form>
             </td>
         </tr>
     @endforeach
