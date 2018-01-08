@@ -16,7 +16,7 @@
 @section('body')
 @foreach($datas as $data)
     <tr>
-        <td>{{ $loop->iteration }}</td>
+        <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
         <td><a href="{{ url('type', [$data->id]) }}">{{ $data->name }}</td>
         <td>{{ $data->things->count() }}</td>
 

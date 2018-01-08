@@ -13,7 +13,7 @@
 @section('body')
 @foreach($datas as $data)
     <tr>
-        <td>{{ $loop->iteration }}</td>
+        <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
         <td>{{ $data->name }}</td>
         <td>{{ $data->student_id }}</td>
         <td>{{ $data->tel }}</td>

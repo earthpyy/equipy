@@ -23,7 +23,7 @@
 @section('body')
     @foreach($datas as $data)
         <tr>
-            <td>{{ $loop->iteration }}</td>
+            <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
             <td>{{ $data->created_at->format('d/m/Y') }}</td>
             <td>{{ $data->promising_date->format('d/m/Y') }}</td>
             <td>{{ $data->borrower->name }}</td>

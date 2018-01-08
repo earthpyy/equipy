@@ -22,7 +22,7 @@
 @section('body')
     @foreach($datas as $data)
         <tr>
-            <td>{{ $loop->iteration }}</td>
+            <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
             <td><a href="{{ url('thing', [$data->id]) }}">{{ $data->name }}</a></td>
             <td>{{ $data->type->name }}</td>
             <td>{{ $data->barcode }}</td>
