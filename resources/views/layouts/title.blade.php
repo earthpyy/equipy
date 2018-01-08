@@ -3,7 +3,7 @@
         <div class="col">
             <h2 class="mb-0">@yield('title') <small>@yield('sub')</small></h2>
         </div>
-        <div class="col-2 align-self-end" style="text-align: right;">
+        <div class="col-5 align-self-end d-inline-block" style="text-align: right;">
             @yield('button')
         </div>
     </div>

@@ -26,6 +26,10 @@ class Lent extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function getPromisingDateAttribute($value) {
+        return date('d/m/Y', strtotime($value));
+    }
+
     public function scopeOfBorrower($query, $borrower)
     {
         return $query->where('borrower_id', $borrower->id);

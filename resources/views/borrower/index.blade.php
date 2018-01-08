@@ -2,6 +2,17 @@
 
 @section('title', 'Borrowers')
 
+@section('button')
+<form method="GET" action="">
+    <div class="input-group input-group-sm">
+        <input type="text" class="form-control" name="q" id="q" value="{{ request()->query('q') }}" placeholder="Search..." />
+        <div class="input-group-append">
+            <input type="submit" class="btn btn-sm" value="Go!" />
+        </div>
+    </div>
+</form>
+@endsection
+
 @section('header')
     <th>#</th>
     <th>Name</th>

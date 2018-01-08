@@ -23,11 +23,23 @@ class BorrowerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datas = Borrower::paginate(10);
+        // if ($request->query('q') != null) {
+            $datas = Borrower::search($request->query('q', ''))->paginate(10);
+        // } else {
+        //     $datas = Borrower::paginate(10);
+        // }
+        // $datas = Borrower::paginate(10);
 
         return view('borrower.index')->with('datas', $datas);
+    }
+
+    public function search(Request $request)
+    {
+        $datas = Borrower::search($request->query('q', ''))->paginate(10);
+
+        return redirect('borrower.index')->with('datas', $datas);
     }
 
     /**

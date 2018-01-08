@@ -14,9 +14,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/typeahead.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    @yield('style')
 </head>
 
 <body>
@@ -46,6 +46,7 @@
                         <a class="nav-link li-dd" href="#">Things</a>
                         <ul class="ul_submenu list-unstyled">
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">List All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.defective') }}">Defective</a></li>
                             {{--  <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.create') }}">New Thing</a></li>  --}}
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">Types</a></li>
                         </ul>

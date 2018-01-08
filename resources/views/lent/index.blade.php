@@ -7,7 +7,7 @@
 @endisset
 
 @section('button')
-    <a class="btn btn-sm btn-success" href="{{ route('lent.borrow', ['borrower' => isset($borrower) ? $borrower : null]) }}">New Borrow</a>
+<a class="btn btn-sm btn-success" href="{{ route('lent.borrow', ['borrower' => isset($borrower) ? $borrower : null]) }}">New Borrow</a>
 @endsection
 
 @section('header')
@@ -25,7 +25,7 @@
         <tr>
             <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
             <td>{{ $data->created_at->format('d/m/Y') }}</td>
-            <td>{{ $data->promising_date->format('d/m/Y') }}</td>
+            <td>{{ $data->promising_date }}</td>
             <td>{{ $data->borrower->name }}</td>
             <td>{{ $data->things->count() }}</td>
             <td>{!! getLentStatus($data) !!}</td>

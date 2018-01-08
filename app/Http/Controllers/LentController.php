@@ -93,7 +93,7 @@ class LentController extends Controller
             // TODO: change student_id here
             'student_id' => 'nullable|digits:10',
             'telephone' => 'required|digits:10',
-            'promising_date' => 'required|date|after_or_equal:today',
+            'promising_date' => 'required|date_format:d/m/Y|after_or_equal:today',
 
             'things' => 'required|array|min:1'
         ]);
@@ -107,7 +107,7 @@ class LentController extends Controller
         $lent = new Lent;
         $lent->borrower_id = $borrower->id;
         // $lent->note = $request->note;
-        $lent->promising_date = $request->promising_date;
+        $lent->promising_date = date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $request->promising_date)));
         $lent->approver_id = Auth::user()->id;
         $lent->save();
 
@@ -162,7 +162,7 @@ class LentController extends Controller
             // TODO: change student_id here
             'student_id' => 'nullable|digits:10',
             'telephone' => 'required|digits:10',
-            'promising_date' => 'required|date',
+            'promising_date' => 'required|date_format:d/m/Y',
 
             // 'things' => 'required|array|min:1'
         ]);
@@ -176,7 +176,7 @@ class LentController extends Controller
         // $lent = new Lent;
         $lent->borrower_id = $borrower->id;
         // $lent->note = $request->note;
-        $lent->promising_date = $request->promising_date;
+        $lent->promising_date = date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $request->promising_date)));
         // $lent->approver_id = Auth::user()->id;
         // $lent->save();
 

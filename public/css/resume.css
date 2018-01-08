@@ -104,18 +104,18 @@ section.resume-section {
     padding-bottom: 3rem !important; } }
 
 .bg-primary {
-  background-color: #BD5D38 !important; }
+  background-color: #f6b848 !important; }
 
 .text-primary {
-  color: #BD5D38 !important; }
+  color: #f6b848 !important; }
 
 a {
-  color: #BD5D38; }
+  color: #f6b848; }
   a:hover, a:focus, a:active {
-    color: #824027; }
+    color: #e9ae42; }
 
 .list-bright {
-  background-color: #ce663d;
+  background-color: #f8c15b;
 }
 
 table td[class*=col-], table th[class*=col-] {

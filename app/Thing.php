@@ -16,4 +16,9 @@ class Thing extends Model
     {
         return $query->where('type_id', $type->id);
     }
+
+    public function scopeDefective($query)
+    {
+        return $query->where('status', 'DEFECTIVE');
+    }
 }

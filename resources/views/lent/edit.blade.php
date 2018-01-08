@@ -4,69 +4,69 @@
 @section('action', url('lent', [$lent->id]))
 
 @php
-    $datas = $lent->things()->orderBy('type_id')->get();
+$datas = $lent->things()->orderBy('type_id')->get();
 @endphp
 
 @section('info-header', 'Info')
 
 @section('info-body')
-    {{ method_field('PUT') }}
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" id="name" value="{{ $lent->borrower->name }}">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="telephone">Telephone</label>
-            <input type="text" class="form-control" name="telephone" id="telephone" value="{{ $lent->borrower->getOriginal('tel') }}">
-        </div>
+{{ method_field('PUT') }}
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" value="{{ $lent->borrower->name }}">
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="student_id">Student ID</label>
-            <input type="text" class="form-control" name="student_id" id="student_id" value="{{ $lent->borrower->getOriginal('student_id') }}">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="promising_date">Promising Date</label>
-            <input type="text" class="form-control" name="promising_date" id="promising_date" value="{{ $lent->promising_date }}">
-        </div>
+    <div class="form-group col-md-6">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" name="telephone" id="telephone" value="{{ $lent->borrower->getOriginal('tel') }}">
     </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="student_id">Student ID</label>
+        <input type="text" class="form-control" name="student_id" id="student_id" value="{{ $lent->borrower->getOriginal('student_id') }}">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="promising_date">Promising Date</label>
+        <input type="text" class="form-control" name="promising_date" id="promising_date" value="{{ $lent->promising_date }}">
+    </div>
+</div>
 @endsection
 
 @section('table-header')
-    <th class="col-1">#</th>
-    <th class="col">Barcode</th>
-    <th class="col">Name</th>
-    <th class="col">Status</th>
-    <th class="col-2">Actions</th>
+<th class="col-1">#</th>
+<th class="col">Barcode</th>
+<th class="col">Name</th>
+<th class="col">Status</th>
+<th class="col-2">Actions</th>
 @endsection
 
 @section('table-body')
-    @foreach($datas as $i => $thing)
-        @if($i == 0 || $datas[$i - 1]->type != $thing->type)
-        <tr class="row">
-            <th colspan="5">{{ $thing->type->name }}</th>
-        </tr>
+@foreach($datas as $i => $thing)
+@if($i == 0 || $datas[$i - 1]->type != $thing->type)
+<tr class="row">
+    <th colspan="5">{{ $thing->type->name }}</th>
+</tr>
+@endif
+<tr class="row">
+    <td class="col-1">{{ $loop->iteration }}</td>
+    <td class="col">{{ $thing->barcode }}</td>
+    <td class="col">{{ $thing->name }}</td>
+    <td class="col">{!! getLentThingStatus($thing) !!}</td>
+    
+    <td class="col-2">
+        <input type="hidden" name="things[{{ $thing->id }}]" value="{{ $thing->pivot->status }}">
+        @if($thing->pivot->status == 'NOTRETURN')
+        <a class="btn btn-sm btn-success return-btn" href="#">Return</a>
+        {{--  @elseif($thing->pivot->status == 'RETURNED')  --}}
+        {{--  <a class="btn btn-sm btn-warning defective-btn" href="#">Defective</a>  --}}
         @endif
-        <tr class="row">
-            <td class="col-1">{{ $loop->iteration }}</td>
-            <td class="col">{{ $thing->barcode }}</td>
-            <td class="col">{{ $thing->name }}</td>
-            <td class="col">{!! getLentThingStatus($thing) !!}</td>
-            
-            <td class="col-2">
-                <input type="hidden" name="things[{{ $thing->id }}]" value="{{ $thing->pivot->status }}">
-                @if($thing->pivot->status == 'NOTRETURN')
-                <a class="btn btn-sm btn-success return-btn" href="#">Return</a>
-                {{--  @elseif($thing->pivot->status == 'RETURNED')  --}}
-                {{--  <a class="btn btn-sm btn-warning defective-btn" href="#">Defective</a>  --}}
-                @endif
-            </td>
-        </tr>
-    @endforeach
+    </td>
+</tr>
+@endforeach
 @endsection
 
-@section('script')
+@push('script')
 <script type="text/javascript">
     $(document).on('click', 'a.return-btn', function() {
         var input = $(this).closest('td').find('input');
@@ -109,10 +109,6 @@
 
     var i = $('#list tr').size() + 1;
 
-    $(document).on("keypress", ":input:not(textarea)", function(event) {
-        return event.keyCode != 13;
-    });
-
     $(document).on('change keydown paste input', '#barcode', function(){
         if ($('#barcode').val().length == 5) {
 
@@ -137,4 +133,4 @@
         }
     });
 </script>
-@endsection
+@endpush

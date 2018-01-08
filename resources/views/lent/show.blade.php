@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <div class="col-4 font-weight-bold">Promising date</div>
-        <div class="col-8">{{ $lent->promising_date->format('d/m/Y H:i') }}</div>
+        <div class="col-8">{{ $lent->promising_date }}</div>
     </div>
     <div class="row">
         <div class="col-4 font-weight-bold">Borrower</div>

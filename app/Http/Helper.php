@@ -2,13 +2,13 @@
 
 function getLentStatus($lent) {
     if ($lent->completed_date == null) {
-        if ($lent->promising_date < date('Y-m-d H:i:s')) {
+        if ($lent->getOriginal('promising_date') < date('Y-m-d H:i:s')) {
             return '<div class="text-danger">Overdue</div>';
         } else {
             return '<div class="text-warning">Uncompleted</div>';
         }
     } else {
-        if ($lent->promising_date < date('Y-m-d H:i:s')) {
+        if ($lent->getOriginal('promising_date') < date('Y-m-d H:i:s')) {
             return '<div class="text-info">Late returned</div>';
         } else {
             return '<div class="text-success">Returned</div>';

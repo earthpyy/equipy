@@ -24,6 +24,7 @@ Route::get('/lent/borrower/{borrower}', 'LentController@borrower');
 Route::resource('lent', 'LentController', ['except' => ['create']]);
 
 Route::post('/thing/detail', 'ThingController@detail');
+Route::get('/thing/defective', 'ThingController@defective')->name('thing.defective');
 Route::resource('thing', 'ThingController');
 
 Route::post('/borrower/get', 'BorrowerController@get');

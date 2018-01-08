@@ -30,6 +30,17 @@ class ThingController extends Controller
     }
 
     /**
+     * Display a listing of defective things.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function defective()
+    {
+        $datas = Thing::where('status', 'DEFECTIVE')->paginate(10);
+        return view('thing.index')->with('datas', $datas)->with('type', 'DEFECTIVE');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
