@@ -26,7 +26,7 @@ class EquipmentController extends Controller
     public function index()
     {
         $datas = Equipment::paginate(10);
-        return view('equipment.index')->with('datas', $datas);
+        return view('equipment.index')->with('sub', 'All')->with('datas', $datas);
     }
 
     /**
@@ -37,7 +37,7 @@ class EquipmentController extends Controller
     public function defective()
     {
         $datas = Equipment::where('status', 'DEFECTIVE')->paginate(10);
-        return view('equipment.index')->with('datas', $datas)->with('category', 'DEFECTIVE');
+        return view('equipment.index')->with('sub', 'Defective')->with('datas', $datas);
     }
 
     /**

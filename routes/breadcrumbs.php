@@ -81,6 +81,7 @@ Breadcrumbs::register('borrower.index', function ($breadcrumbs) {
     $breadcrumbs->push('Borrowers', route('borrower.index'));
 });
 Breadcrumbs::register('borrower.edit', function ($breadcrumbs, $borrower) {
-    $breadcrumbs->parent('borrower.show', $borrower);
+    $breadcrumbs->parent('borrower.index', $borrower);
+    $breadcrumbs->push($borrower->name, route('borrowing.borrower', $borrower));
     $breadcrumbs->push('Edit Borrower', route('borrower.edit', $borrower));
 });

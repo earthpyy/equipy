@@ -68,7 +68,7 @@ class CategoryController extends Controller
     {
         $datas = Equipment::ofCategory($category)->paginate(10);
 
-        return view('equipment.index')->with('category', $category->name)->with('datas', $datas);
+        return view('equipment.index')->with('category', $category)->with('datas', $datas);
     }
 
     /**

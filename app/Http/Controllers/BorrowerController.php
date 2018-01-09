@@ -61,10 +61,10 @@ class BorrowerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -72,10 +72,21 @@ class BorrowerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Borrower  $borrower
+     * @return \Illuminate\Http\Response
+     */
+    // public function show(Borrower $borrower)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -85,7 +96,7 @@ class BorrowerController extends Controller
      */
     public function edit(Borrower $borrower)
     {
-        //
+        return view('borrower.edit')->with('borrower', $borrower);
     }
 
     /**
@@ -97,7 +108,18 @@ class BorrowerController extends Controller
      */
     public function update(Request $request, Borrower $borrower)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:191',
+            'student_id' => 'nullable|digits:10',
+            'telephone' => 'required|digits:10'
+        ]);
+        
+        $borrower->name = $request->name;
+        $borrower->student_id = $request->student_id;
+        $borrower->tel = $request->telephone;
+        $borrower->save();
+        
+        return redirect('borrower');
     }
 
     /**

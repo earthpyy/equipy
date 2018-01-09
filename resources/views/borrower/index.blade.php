@@ -31,7 +31,7 @@
 
         <td>
             <a class="btn btn-sm btn-info" href="{{ url('borrowing/borrower', [$data->id]) }}">Show</a>
-            {{--  <a class="btn btn-sm btn-warning" href="{{ route('borrower.edit', ['id' => $data->id]) }}">Edit</a>  --}}
+            <a class="btn btn-sm btn-warning" href="{{ route('borrower.edit', $data->id) }}">Edit</a>
         </td>
     </tr>
 @endforeach

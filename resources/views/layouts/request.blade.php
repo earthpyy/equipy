@@ -45,7 +45,6 @@
 
 @section('script')
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="{{ asset('js/disableAutoFill.js') }}"></script>
 
 <script type="text/javascript">
     $.ajaxSetup({
@@ -57,48 +56,6 @@
     $(document).ready(function () {
         $('#promising_date').datepicker({
             dateFormat: "dd/mm/yy"
-        });
-
-        var borrowers = [];
-        $.ajax({
-            method: "POST",
-            url: "{!! url('borrower/get') !!}",
-            dataType: "json",
-            async: false,
-            success: function(vals) {
-                vals.forEach(function (val) {
-                    var borrower = {
-                        "label" : val.name,
-                        "telephone" : val.tel,
-                        "student_id" : val.student_id
-                    };
-                    borrowers.push(borrower);
-                });
-            }
-        });
-
-        $("#name").autocomplete({
-            minLength: 0,
-            source: borrowers,
-            focus: function(event, ui) {
-                $(this).val(ui.item.label);
-                return false;
-            },
-            select: function(event, ui) {
-                $(this).val(ui.item.label);
-                $("#telephone" ).val(ui.item.telephone.split('-').join(''));
-                $("#student_id").val(ui.item.student_id.split('-').join(''));
-        
-                return false;
-            }
-        }).autocomplete("instance")._renderItem = function(ul, item) {
-            return $("<li>")
-            .append("<div>" + item.label + "<br>" + item.student_id + "</div>")
-            .appendTo(ul);
-        };
-
-        $('#name').each(function () {
-            $(this).disableAutoFill();
         });
     });
 

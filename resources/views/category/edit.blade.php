@@ -1,7 +1,6 @@
 @extends('layouts.form')
 
 @section('title', 'Category')
-@section('sub', 'ID: ' . $category->id)
 @section('action', url('category', [$category->id]))
 
 @section('info-header', 'Info')

@@ -1,7 +1,6 @@
 @extends('layouts.table')
 
 @section('title', 'Borrowing')
-@section('sub', 'ID: ' . $borrowing->id)
 
 @php
     $datas = $borrowing->equipment()->orderBy('category_id')->paginate(10);

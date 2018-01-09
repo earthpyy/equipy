@@ -11,20 +11,23 @@ $datas = $borrowing->equipment()->orderBy('category_id')->get();
 
 @section('info-body')
 {{ method_field('PUT') }}
+<div class="alert alert-primary" role="alert">
+    If you want to edit borrower's information, click <a href="{{ route('borrower.edit', $borrowing->borrower) }}">here</a>.
+</div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" value="{{ $borrowing->borrower->name }}">
+        <input type="text" class="form-control" name="name" id="name" value="{{ $borrowing->borrower->name }}" disabled>
     </div>
     <div class="form-group col-md-6">
         <label for="telephone">Telephone</label>
-        <input type="text" class="form-control" name="telephone" id="telephone" value="{{ $borrowing->borrower->getOriginal('tel') }}">
+        <input type="text" class="form-control" name="telephone" id="telephone" value="{{ $borrowing->borrower->getOriginal('tel') }}" disabled>
     </div>
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="student_id">Student ID</label>
-        <input type="text" class="form-control" name="student_id" id="student_id" value="{{ $borrowing->borrower->getOriginal('student_id') }}">
+        <input type="text" class="form-control" name="student_id" id="student_id" value="{{ $borrowing->borrower->getOriginal('student_id') }}" disabled>
     </div>
     <div class="form-group col-md-6">
         <label for="promising_date">Promising Date</label>

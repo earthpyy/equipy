@@ -1,9 +1,14 @@
 @extends('layouts.table')
 
-@section('title', 'Borrowings')
-
 @isset($borrower)
-    @section('sub', $borrower->name)
+@section('title', $borrower->name)
+@endisset
+@empty($borrower)
+@section('title', 'Borrowings')
+@endempty
+
+@isset($sub)
+    @section('sub', $sub)
 @endisset
 
 @section('button')
@@ -23,7 +28,7 @@
 @section('body')
     @foreach($datas as $data)
         <tr>
-            <td><a href="{{ url('borrowing', [$data->id]) }}">{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</a></td>
+            <td><a href="{{ route('borrowing.show', $data->id) }}">{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</a></td>
             <td>{{ $data->created_at->format('d/m/Y') }}</td>
             <td>{{ $data->promising_date }}</td>
             <td>{{ $data->borrower->name }}</td>
@@ -32,8 +37,8 @@
 
             <td>
                 {{--  <a class="btn btn-sm btn-info" href="{{ url('borrowing', [$data->id]) }}">Show</a>  --}}
-                <a class="btn btn-sm btn-warning" href="{{ route('borrowing.edit', ['id' => $data->id]) }}">Edit | Return</a>
-                <form class="d-inline" action="{{url('borrowing', [$data->id])}}" method="POST">
+                <a class="btn btn-sm btn-warning" href="{{ route('borrowing.edit', $data->id) }}">Edit | Return</a>
+                <form class="d-inline" action="{{ url('borrowing', [$data->id])}}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>

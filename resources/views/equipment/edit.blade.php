@@ -1,7 +1,6 @@
 @extends('layouts.form')
 
-@section('title', 'Equipment')
-@section('sub', 'ID: ' . $equipment->id)
+@section('title', $equipment->name)
 @section('action', url('equipment', [$equipment->id]))
 
 @section('info-header', 'Info')

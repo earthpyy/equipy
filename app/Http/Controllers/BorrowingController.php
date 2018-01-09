@@ -29,7 +29,7 @@ class BorrowingController extends Controller
     {
         $datas = Borrowing::paginate(10);
         
-        return view('borrowing.index')->with('datas', $datas);
+        return view('borrowing.index')->with('sub', 'All')->with('datas', $datas);
     }
 
     /**
@@ -66,7 +66,7 @@ class BorrowingController extends Controller
     {
         $datas = Borrowing::where('completed_date', '!=', null)->paginate(10);
 
-        return view('borrowing.index')->with('sub', 'History')->with('datas', $datas);
+        return view('borrowing.index')->with('sub', 'Histories')->with('datas', $datas);
     }
 
     /**
@@ -158,23 +158,22 @@ class BorrowingController extends Controller
     public function update(Request $request, Borrowing $borrowing)
     {
         $request->validate([
-            'name' => 'required|string|max:191',
+            // 'name' => 'required|string|max:191',
             // TODO: change student_id here
-            'student_id' => 'nullable|digits:10',
-            'telephone' => 'required|digits:10',
-            'promising_date' => 'required|date_format:d/m/Y',
+            // 'student_id' => 'nullable|digits:10',
+            // 'telephone' => 'required|digits:10',
+            'promising_date' => 'required|date_format:d/m/Y|after_or_equal:today',
 
             // 'equipment' => 'required|array|min:1'
         ]);
         
-        $borrower = Borrower::firstOrCreate([
-            'name' => $request->name,
-            'student_id' => $request->student_id,
-            'tel' => $request->telephone
-        ]);
+        // $borrowing->borrower->name = $request->name;
+        // $borrowing->borrower->student_id = $request->student_id;
+        // $borrowing->borrower->tel = $request->telephone;
+        // $borrowing->borrower->save();
 
         // $borrowing = new Borrowing;
-        $borrowing->borrower_id = $borrower->id;
+        // $borrowing->borrower_id = $borrower->id;
         // $borrowing->note = $request->note;
         $borrowing->promising_date = date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $request->promising_date)));
         // $borrowing->approver_id = Auth::user()->id;

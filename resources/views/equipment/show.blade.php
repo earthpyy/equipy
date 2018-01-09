@@ -1,7 +1,6 @@
 @extends('layouts.view')
 
-@section('title', 'Equipment')
-@section('sub', 'ID: ' . $equipment->id)
+@section('title', $equipment->name)
 
 @section('info-header', 'Info')
 
