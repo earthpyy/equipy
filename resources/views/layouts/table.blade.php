@@ -16,5 +16,5 @@
         </tbody>
     </table>
 
-    {{ $datas->links() }}
+    {{ $datas->links('vendor.pagination.bootstrap-4') }}
 @endsection

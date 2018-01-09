@@ -77,7 +77,7 @@
             </div>
         </nav>
 
-        <div class="resume-section p-3 p-lg-5 d-flex d-column my-auto">
+        <div class="resume-section p-3 d-flex d-column my-auto">
             <div class="container">
                 @yield('content')
             </div>
