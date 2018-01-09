@@ -66,7 +66,8 @@ $datas = $lent->things()->orderBy('type_id')->get();
 @endforeach
 @endsection
 
-@push('script')
+@section('script')
+@parent
 <script type="text/javascript">
     $(document).on('click', 'a.return-btn', function() {
         var input = $(this).closest('td').find('input');
@@ -133,4 +134,4 @@ $datas = $lent->things()->orderBy('type_id')->get();
         }
     });
 </script>
-@endpush
+@endsection
