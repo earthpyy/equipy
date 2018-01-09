@@ -32,40 +32,40 @@
                 <ul class="navbar-nav">
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">@lang('app.login')</a>
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     {{-- <li><a href="{{ route('register') }}">Register</a></li> --}}
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">@lang('app.home')</a>
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item submenu">
-                        <a class="nav-link li-dd" href="#">@lang('app.things')</a>
+                        <a class="nav-link li-dd" href="#">Things</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">@lang('app.things.all')</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.defective') }}">@lang('app.things.defective')</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">List All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.defective') }}">Defective</a></li>
                             {{--  <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.create') }}">New Thing</a></li>  --}}
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">@lang('app.things.types')</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">Types</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('lent.borrow') }}">@lang('app.borrow')</a>
+                        <a class="nav-link" href="{{ route('lent.borrow') }}">Borrow</a>
                     </li>
                     <li class="nav-item submenu">
-                        <a class="nav-link li-dd" href="#">@lang('app.list')</a>
+                        <a class="nav-link li-dd" href="#">List</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">@lang('app.list.all')</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.uncompleted') }}">@lang('app.list.uncompleted')</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.history') }}">@lang('app.list.history')</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.uncompleted') }}">Uncompleted</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.history') }}">History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('borrower.index') }}">@lang('app.borrowers')</a>
+                        <a class="nav-link" href="{{ route('borrower.index') }}">Borrowers</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                @lang('app.logout')
+                            Logout
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

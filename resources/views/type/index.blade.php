@@ -9,7 +9,9 @@
 @section('header')
     <th>#</th>
     <th>Name</th>
-    <th>Amount</th>
+    <th>Available</th>
+    <th>Out of stock</th>
+    <th>Defective</th>
     <th>Actions</th>
 @endsection
 
@@ -18,7 +20,9 @@
     <tr>
         <td>{{ ($datas->perPage() * ($datas->currentPage() - 1)) + $loop->iteration }}</td>
         <td><a href="{{ url('type', [$data->id]) }}">{{ $data->name }}</td>
-        <td>{{ $data->things->count() }}</td>
+        <td>{{ $data->things()->available()->count() }}</td>
+        <td>{{ $data->things()->outOfStock()->count() }}</td>
+        <td>{{ $data->things()->defective()->count() }}</td>
 
         <td>
             {{--  <a class="btn btn-sm btn-info" href="{{ url('type', [$data->id]) }}">Show</a>  --}}

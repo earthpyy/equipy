@@ -17,8 +17,18 @@ class Thing extends Model
         return $query->where('type_id', $type->id);
     }
 
+    public function scopeAvailable($query)
+    {
+        return $query->where('status', 'AVAILABLE');
+    }
+
     public function scopeDefective($query)
     {
         return $query->where('status', 'DEFECTIVE');
+    }
+
+    public function scopeOutOfStock($query)
+    {
+        return $query->where('status', 'OUTOFSTOCK');
     }
 }
