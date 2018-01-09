@@ -52,7 +52,7 @@
                         <a class="nav-link" href="{{ route('borrowing.borrow') }}">Borrow</a>
                     </li>
                     <li class="nav-item submenu">
-                        <a class="nav-link li-dd" href="#">List</a>
+                        <a class="nav-link li-dd" href="#">List | Return</a>
                         <ul class="ul_submenu list-unstyled">
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('borrowing.index') }}">All</a></li>
                             <li class="nav-item list-bright"><a class="nav-link" href="{{ route('borrowing.uncompleted') }}">Uncompleted</a></li>
