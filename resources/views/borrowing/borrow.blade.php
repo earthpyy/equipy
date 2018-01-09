@@ -38,8 +38,6 @@
 
 @section('script')
 @parent
-{{--  <script src="{{ asset('js/typeahead.js') }}"></script>  --}}
-
 <script type="text/javascript">
     var i = $('#list tr').size() + 1;
 

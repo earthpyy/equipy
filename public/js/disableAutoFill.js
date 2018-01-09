@@ -20,9 +20,10 @@
 			disableAutoFill: function($input, options) {
 				self.settings = $.extend({}, defaults, options || {});
 				if (self.isBrowser('safari')) {
-					self.alterLabel($input);
 					self.alterName($input);
 					self.alterId($input);
+					self.alterLabel($input);
+					self.spoof($input);
 				}
 				$input.attr('autocomplete', 'off');
 			},
@@ -128,7 +129,7 @@
 			 * @returns {*}
 			 */
 			findLabel: function ($input) {
-				var $label = $('label[for="'+$input.attr('id')+'"]');
+				var $label = $('label[for="'+$input.attr('data-original-id')+'"]');
 
 				if ($label.length > 0) {
 					return $label;
@@ -141,6 +142,20 @@
 				}
 				return null;
 			},
+
+			/**
+			* Insert fake input before real input to spoof Safari
+			* @param $input
+			*/
+			spoof: function ($input) {
+				$('<input type="text" hidden>').insertBefore($input);
+				// setTimeout(function() {
+				// 	var $label = self.findLabel($input);
+				// 	if ($label && $label.length > 0) {
+				// 		$label.attr('for', $input.attr('id'));
+				// 	}
+				// }, 5000);
+            },
 
 			/**
 			 * Generate a random string

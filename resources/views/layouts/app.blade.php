@@ -89,7 +89,6 @@
     {{--  <script src="{{ asset('js/app.js') }}"></script>  --}}
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/resume.js') }}"></script>
-    <script src="{{ asset('js/disableAutoFill.js') }}"></script>
 
     @yield('script')
 
