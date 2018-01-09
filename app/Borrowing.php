@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Lent extends Model
+class Borrowing extends Model
 {
     use SoftDeletes;
 
@@ -14,8 +14,8 @@ class Lent extends Model
         'promising_date', 'completed_date', 'deleted_at'
     ];
 
-    public function things() {
-        return $this->belongsToMany('App\Thing')->withPivot('status', 'return_date');
+    public function equipment() {
+        return $this->belongsToMany('App\Equipment')->withPivot('status', 'return_date');
     }
 
     public function borrower() {

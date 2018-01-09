@@ -1,7 +1,7 @@
 @extends('layouts.form')
 
-@section('title', 'New Type')
-@section('action', url('type'))
+@section('title', 'New Category')
+@section('action', url('category'))
 
 @section('info-header', 'Info')
 

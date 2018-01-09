@@ -12,7 +12,7 @@
 
     <div class="card">
         <div class="card-header">
-            Things
+            Equipment
         </div>
         <div class="card-body">
             <div class="form-row">

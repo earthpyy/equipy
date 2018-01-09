@@ -1,7 +1,7 @@
 @extends('layouts.form')
 
-@section('title', 'New Thing')
-@section('action', url('thing'))
+@section('title', 'New Equipment')
+@section('action', url('equipment'))
 
 @section('info-header', 'Info')
 
@@ -18,10 +18,10 @@
             <input type="text" class="form-control" name="name" id="name">
         </div>
         <div class="form-group col-md-6">
-            <label for="type">Type</label>
-            <select class="form-control" name="type" id="type">
-                @foreach($types as $type)
-                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+            <label for="category">Category</label>
+            <select class="form-control" name="category" id="category">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Lent::class, function (Faker $faker) {
+$factory->define(App\Borrowing::class, function (Faker $faker) {
     return [
         'borrower_id' => DB::table('borrowers')->select('id')->inRandomOrder()->first()->id,
         'note' => $faker->text(),

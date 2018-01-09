@@ -15,17 +15,17 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('type', 'TypeController');
+Route::resource('category', 'CategoryController');
 
-Route::get('/lent/uncompleted', 'LentController@showUncompleted')->name('lent.uncompleted');
-Route::get('/lent/history', 'LentController@showHistory')->name('lent.history');
-Route::get('/lent/borrow/{borrower?}', 'LentController@borrow')->name('lent.borrow');
-Route::get('/lent/borrower/{borrower}', 'LentController@borrower');
-Route::resource('lent', 'LentController', ['except' => ['create']]);
+Route::get('/borrowing/uncompleted', 'BorrowingController@showUncompleted')->name('borrowing.uncompleted');
+Route::get('/borrowing/history', 'BorrowingController@showHistory')->name('borrowing.history');
+Route::get('/borrowing/borrow/{borrower?}', 'BorrowingController@borrow')->name('borrowing.borrow');
+Route::get('/borrowing/borrower/{borrower}', 'BorrowingController@borrower');
+Route::resource('borrowing', 'BorrowingController', ['except' => ['create']]);
 
-Route::post('/thing/detail', 'ThingController@detail');
-Route::get('/thing/defective', 'ThingController@defective')->name('thing.defective');
-Route::resource('thing', 'ThingController');
+Route::post('/equipment/detail', 'EquipmentController@detail');
+Route::get('/equipment/defective', 'EquipmentController@defective')->name('equipment.defective');
+Route::resource('equipment', 'EquipmentController');
 
 Route::post('/borrower/get', 'BorrowerController@get');
 Route::resource('borrower', 'BorrowerController', ['except' => ['show', 'create']]);

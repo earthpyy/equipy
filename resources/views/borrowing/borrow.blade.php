@@ -1,7 +1,7 @@
 @extends('layouts.request')
 
 @section('title', 'Borrow')
-@section('action', url('lent'))
+@section('action', url('borrowing'))
 
 @section('info-header', 'Info')
 
@@ -32,7 +32,7 @@
     <th class="col-1">#</th>
     <th class="col">Barcode</th>
     <th class="col">Name</th>
-    <th class="col">Type</th>
+    <th class="col">Category</th>
     <th class="col-2">Actions</th>
 @endsection
 
@@ -51,23 +51,23 @@
 
             $.ajax({
                 method: "POST",
-                url: "{!! url('thing/detail') !!}",
+                url: "{!! url('equipment/detail') !!}",
                 data: {
                     "barcode" : barcode,
                     "method" : "borrow"
                 },
                 dataType: "json",
-                success: function(thing) {
+                success: function(equipment) {
                     var dup = false;
-                    if (thing.length != 0) {
-                        $('.things').each(function () {
-                            if ($(this).text() == thing.barcode) {
+                    if (equipment.length != 0) {
+                        $('.equipment').each(function () {
+                            if ($(this).text() == equipment.barcode) {
                                 dup = true;
                                 return;
                             }
                         });
                         if (!dup) {
-                            $('#list').append('<tr class="row"><td class="col-1"><input type="hidden" name="things[]" value="' + thing.id + '">' + i + '</td><td class="col things">' + thing.barcode + '</td><td class="col">' + thing.name + '</td><td class="col">' + thing.type.name + '</td><td class="col-2"><a class="btn btn-sm btn-danger" id="remove" href="#">Remove</a></td></tr>');  
+                            $('#list').append('<tr class="row"><td class="col-1"><input type="hidden" name="equipment[]" value="' + equipment.id + '">' + i + '</td><td class="col equipment">' + equipment.barcode + '</td><td class="col">' + equipment.name + '</td><td class="col">' + equipment.category.name + '</td><td class="col-2"><a class="btn btn-sm btn-danger" id="remove" href="#">Remove</a></td></tr>');  
                             i++;
                         } else {
                             alert('This equipment is already in list!');

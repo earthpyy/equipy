@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Type;
-use App\Thing;
+use App\Category;
+use App\Equipment;
 use Illuminate\Http\Request;
 
-class TypeController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,9 +25,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $datas = Type::paginate(10);
+        $datas = Category::paginate(10);
         
-        return view('type.index')->with('datas', $datas);
+        return view('category.index')->with('datas', $datas);
     }
 
     /**
@@ -37,7 +37,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('type.create');
+        return view('category.create');
     }
 
     /**
@@ -49,68 +49,68 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|unique:types|min:3|max:191'
+            'name' => 'required|string|unique:categories|min:3|max:191'
         ]);
         
-        Type::create([
+        Category::create([
             'name' => $request->name
         ]);
-        return redirect('type');
+        return redirect('category');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Type  $type
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Type $type)
+    public function show(Category $category)
     {
-        $datas = Thing::ofType($type)->paginate(10);
+        $datas = Equipment::ofCategory($category)->paginate(10);
 
-        return view('thing.index')->with('type', $type->name)->with('datas', $datas);
+        return view('equipment.index')->with('category', $category->name)->with('datas', $datas);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Type  $type
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Category $category)
     {
-        return view('type.edit')->with('type', $type);
+        return view('category.edit')->with('category', $category);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Type  $type
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required|string|unique:types,name,' . $type->id . '|min:3|max:191'
+            'name' => 'required|string|unique:categories,name,' . $category->id . '|min:3|max:191'
         ]);
         
-        $type->name = $request->name;
-        $type->save();
+        $category->name = $request->name;
+        $category->save();
 
-        return redirect('type');
+        return redirect('category');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Type  $type
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Category $category)
     {
-        $type->things()->delete();
-        $type->delete();
+        $category->equipment()->delete();
+        $category->delete();
         return back();
     }
 }

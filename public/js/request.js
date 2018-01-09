@@ -18,7 +18,7 @@ $(document).on('change keydown paste input', '#barcode', function(){
 
         $.ajax({
             type: "POST",
-            url: baseUrl + "/thing/getDetail",
+            url: baseUrl + "/equipment/getDetail",
             data: {
                 "barcode" : barcode
             },

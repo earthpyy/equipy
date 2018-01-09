@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Borrower;
-use App\Lent;
+use App\Borrowing;
 use Illuminate\Http\Request;
 
 class BorrowerController extends Controller

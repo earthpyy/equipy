@@ -3,7 +3,7 @@
 return [
 
     'name' => 'Name',
-    'type' => 'Category',
+    'category' => 'Category',
     'barcode' => 'Barcode',
     'status' => 'Status',
 

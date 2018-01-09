@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TypesTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Type::insert([
+        App\Category::insert([
             ['name' => 'Camera'],
             ['name' => 'Camera Equip.'], 
             ['name' => 'Light']

@@ -1,10 +1,10 @@
 @extends('layouts.request')
 
 @section('title', 'Edit/Return')
-@section('action', url('lent', [$lent->id]))
+@section('action', url('borrowing', [$borrowing->id]))
 
 @php
-$datas = $lent->things()->orderBy('type_id')->get();
+$datas = $borrowing->equipment()->orderBy('category_id')->get();
 @endphp
 
 @section('info-header', 'Info')
@@ -14,21 +14,21 @@ $datas = $lent->things()->orderBy('type_id')->get();
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" value="{{ $lent->borrower->name }}">
+        <input type="text" class="form-control" name="name" id="name" value="{{ $borrowing->borrower->name }}">
     </div>
     <div class="form-group col-md-6">
         <label for="telephone">Telephone</label>
-        <input type="text" class="form-control" name="telephone" id="telephone" value="{{ $lent->borrower->getOriginal('tel') }}">
+        <input type="text" class="form-control" name="telephone" id="telephone" value="{{ $borrowing->borrower->getOriginal('tel') }}">
     </div>
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="student_id">Student ID</label>
-        <input type="text" class="form-control" name="student_id" id="student_id" value="{{ $lent->borrower->getOriginal('student_id') }}">
+        <input type="text" class="form-control" name="student_id" id="student_id" value="{{ $borrowing->borrower->getOriginal('student_id') }}">
     </div>
     <div class="form-group col-md-6">
         <label for="promising_date">Promising Date</label>
-        <input type="text" class="form-control" name="promising_date" id="promising_date" value="{{ $lent->promising_date }}">
+        <input type="text" class="form-control" name="promising_date" id="promising_date" value="{{ $borrowing->promising_date }}">
     </div>
 </div>
 @endsection
@@ -42,23 +42,23 @@ $datas = $lent->things()->orderBy('type_id')->get();
 @endsection
 
 @section('table-body')
-@foreach($datas as $i => $thing)
-@if($i == 0 || $datas[$i - 1]->type != $thing->type)
+@foreach($datas as $i => $equipment)
+@if($i == 0 || $datas[$i - 1]->category != $equipment->category)
 <tr class="row">
-    <th colspan="5">{{ $thing->type->name }}</th>
+    <th colspan="5">{{ $equipment->category->name }}</th>
 </tr>
 @endif
 <tr class="row">
     <td class="col-1">{{ $loop->iteration }}</td>
-    <td class="col">{{ $thing->barcode }}</td>
-    <td class="col">{{ $thing->name }}</td>
-    <td class="col">{!! getLentThingStatus($thing) !!}</td>
+    <td class="col">{{ $equipment->barcode }}</td>
+    <td class="col">{{ $equipment->name }}</td>
+    <td class="col">{!! getBorrowingEquipmentStatus($equipment) !!}</td>
     
     <td class="col-2">
-        <input type="hidden" name="things[{{ $thing->id }}]" value="{{ $thing->pivot->status }}">
-        @if($thing->pivot->status == 'NOTRETURN')
+        <input type="hidden" name="equipment[{{ $equipment->id }}]" value="{{ $equipment->pivot->status }}">
+        @if($equipment->pivot->status == 'NOTRETURN')
         <a class="btn btn-sm btn-success return-btn" href="#">Return</a>
-        {{--  @elseif($thing->pivot->status == 'RETURNED')  --}}
+        {{--  @elseif($equipment->pivot->status == 'RETURNED')  --}}
         {{--  <a class="btn btn-sm btn-warning defective-btn" href="#">Defective</a>  --}}
         @endif
     </td>

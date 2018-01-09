@@ -30,7 +30,7 @@
         <td>{{ $data->tel }}</td>
 
         <td>
-            <a class="btn btn-sm btn-info" href="{{ url('lent/borrower', [$data->id]) }}">Show</a>
+            <a class="btn btn-sm btn-info" href="{{ url('borrowing/borrower', [$data->id]) }}">Show</a>
             {{--  <a class="btn btn-sm btn-warning" href="{{ route('borrower.edit', ['id' => $data->id]) }}">Edit</a>  --}}
         </td>
     </tr>

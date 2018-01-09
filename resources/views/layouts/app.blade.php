@@ -40,23 +40,23 @@
                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item submenu">
-                        <a class="nav-link li-dd" href="#">Things</a>
+                        <a class="nav-link li-dd" href="#">Equipment</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.index') }}">List All</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.defective') }}">Defective</a></li>
-                            {{--  <li class="nav-item list-bright"><a class="nav-link" href="{{ route('thing.create') }}">New Thing</a></li>  --}}
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('type.index') }}">Types</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('equipment.index') }}">List All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('equipment.defective') }}">Defective</a></li>
+                            {{--  <li class="nav-item list-bright"><a class="nav-link" href="{{ route('equipment.create') }}">New Equipment</a></li>  --}}
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('category.index') }}">Categories</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('lent.borrow') }}">Borrow</a>
+                        <a class="nav-link" href="{{ route('borrowing.borrow') }}">Borrow</a>
                     </li>
                     <li class="nav-item submenu">
                         <a class="nav-link li-dd" href="#">List</a>
                         <ul class="ul_submenu list-unstyled">
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.index') }}">All</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.uncompleted') }}">Uncompleted</a></li>
-                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('lent.history') }}">History</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('borrowing.index') }}">All</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('borrowing.uncompleted') }}">Uncompleted</a></li>
+                            <li class="nav-item list-bright"><a class="nav-link" href="{{ route('borrowing.history') }}">Histories</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

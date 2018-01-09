@@ -11,8 +11,8 @@ class Borrower extends Model
 
     protected $guarded = [];
 
-    public function lents() {
-        return $this->hasMany('App\Lent');
+    public function borrowings() {
+        return $this->hasMany('App\Borrowing');
     }
 
     public function getTelAttribute($value) {
